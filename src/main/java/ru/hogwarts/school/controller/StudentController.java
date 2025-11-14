@@ -1,6 +1,8 @@
 package ru.hogwarts.school.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.Service.StudentService;
 
@@ -17,6 +19,7 @@ public class StudentController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Student create(@RequestBody Student student) {
         return studentService.create(student);
     }
@@ -32,16 +35,14 @@ public class StudentController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
         studentService.delete(id);
     }
 
     @GetMapping
     public Collection<Student> findByAge(@RequestParam(required = false) Integer age) {
-        if (age != null && age > 0) {
-            return studentService.findByAge(age);
-        }
-        return java.util.Collections.emptyList();
+        return studentService.findByAge(age != null ? age : 0);
     }
 
     @GetMapping("/by-age-between")
@@ -52,7 +53,7 @@ public class StudentController {
     }
 
     @GetMapping("/{id}/faculty")
-    public Object getFacultyByStudentId(@PathVariable Long id) {
+    public Faculty getFacultyByStudentId(@PathVariable Long id) {
         return studentService.getFacultyByStudentId(id);
     }
 }
