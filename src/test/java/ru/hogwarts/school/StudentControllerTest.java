@@ -10,7 +10,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import ru.hogwarts.school.model.Student;
-
 import java.util.Collection;
 
 import static org.assertj.core.api.Assertions.assertThat;
