@@ -10,7 +10,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import ru.hogwarts.school.Service.StudentService;
 import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.model.Student;
-
 import java.util.Collections;
 import java.util.List;
 
